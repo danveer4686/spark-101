@@ -1,5 +1,6 @@
 package core
 
+import common.Schema.CC
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
@@ -16,7 +17,7 @@ object Spark1RDD {
 
 
   def main(args: Array[String]): Unit = {
-    val numbersRDD: RDD[Int] = sc.parallelize(1 to 1000000)
+    val numbersRDD: RDD[Int] = sc.parallelize(1 to 100)
     mapExample(numbersRDD)
     filterExample(numbersRDD)
     wordCountRDD()
@@ -49,7 +50,6 @@ object Spark1RDD {
     numbersDF.show
 
     // RDD -> DS
-    case class CC(number:Int)
     val numbersDS1:Dataset[CC] = numbersDF.as[CC]
     val numbersDS = spark.createDataset(rdd)
     numbersDS1.show()

@@ -7,7 +7,7 @@ object Spark2DF {
 
   // the entry point to the Spark structured API
   val spark = SparkSession.builder()
-    .appName("Spark Recap")
+    .appName("SparkApp")
     .master("local[2]")
     .getOrCreate()
 

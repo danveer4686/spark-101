@@ -1,5 +1,6 @@
 package core
 
+import common.Schema.Stocks
 import org.apache.spark.sql.SparkSession
 
 object Spark3DS {
@@ -16,19 +17,18 @@ object Spark3DS {
 
   def readingDataSet():Unit ={
 
-    case class Stocks(id: Long, name: String, guitars: Seq[Long], band: Long)
     import org.apache.spark.sql._
     val mapping = Encoders.product[Stocks]
 
-    val guitarPlayers = spark
+    val stocksDS = spark
       .read.format("csv")
       .schema(mapping.schema)
-      .option("header",true)
+      .option("header",false)
       .option("delimiter",",")
       .load("src/main/resources/data/stocks/aapl.csv")
       .as[Stocks](mapping)
 
-    guitarPlayers.show()
+    stocksDS.show()
 
   }
 
