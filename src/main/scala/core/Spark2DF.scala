@@ -1,15 +1,12 @@
 package core
 
-import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
+import service.SparkSessionManager._
+
 
 object Spark2DF {
 
-  // the entry point to the Spark structured API
-  val spark = SparkSession.builder()
-    .appName("SparkApp")
-    .master("local[2]")
-    .getOrCreate()
+  //sparksession entrypoint has been imported from service.SparkSessionManager
 
   // read a DF
   val cars = spark.read

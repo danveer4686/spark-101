@@ -2,19 +2,13 @@ package core
 
 import common.Schema.CC
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
+import org.apache.spark.sql.{DataFrame, Dataset}
+import service.SparkSessionManager._
 
 object Spark1RDD {
 
-  // the entry point to the Spark structured API
-  val spark = SparkSession.builder()
-    .appName("SparkApp")
-    .master("local[2]")
-    .getOrCreate()
-
-  val sc = spark.sparkContext
+  //sparksession entrypoint has been imported from service.SparkSessionManager
   import spark.implicits._
-
 
   def main(args: Array[String]): Unit = {
     val numbersRDD: RDD[Int] = sc.parallelize(1 to 100)

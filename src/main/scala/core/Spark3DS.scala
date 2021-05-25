@@ -1,15 +1,9 @@
 package core
 
 import common.Schema.Stocks
-import org.apache.spark.sql.SparkSession
+import service.SparkSessionManager._
 
 object Spark3DS {
-
-  // the entry point to the Spark structured API
-  val spark = SparkSession.builder()
-    .appName("Spark Recap")
-    .master("local[2]")
-    .getOrCreate()
 
   def main(args: Array[String]): Unit = {
     readingDataSet
