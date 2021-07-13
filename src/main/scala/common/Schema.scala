@@ -1,5 +1,7 @@
 package common
 
+import org.apache.spark.sql.types.{DateType, DoubleType, StringType, StructField, StructType}
+
 object Schema {
 
   case class CC(number:Int)
@@ -24,6 +26,12 @@ object Schema {
                                   master_num_instance: Int = 1,
                                   worker_num_instance: Int = 3
                                 )
+
+  val stocksSchema = StructType(Array(
+    StructField("company", StringType),
+    StructField("date", DateType),
+    StructField("value", DoubleType)
+  ))
 
 
 
