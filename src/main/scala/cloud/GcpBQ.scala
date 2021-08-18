@@ -13,7 +13,7 @@ object GcpBQ {
     executeQueryInBQ("")
     getDataFromBQ("")
     loadDataIntoBQFromFile()
-    loadIntoBQTable("","","","","",WRITE_TRUNCATE,CREATE_IF_NEEDED,new Schema())
+    //loadIntoBQTable("","","","","",WRITE_TRUNCATE,CREATE_IF_NEEDED,new Schema())
 
   }
 

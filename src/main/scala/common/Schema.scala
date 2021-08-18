@@ -1,11 +1,35 @@
 package common
 
-import org.apache.spark.sql.types.{DateType, DoubleType, StringType, StructField, StructType}
+import org.apache.spark.sql.types.{DateType, DoubleType, LongType, StringType, StructField, StructType}
 
 object Schema {
 
   case class CC(number:Int)
   case class Stocks(name: String, date: String, price: Double)
+
+  case class Car(
+                  Name: String,
+                  Miles_per_Gallon: Option[Double],
+                  Cylinders: Option[Long],
+                  Displacement: Option[Double],
+                  Horsepower: Option[Long],
+                  Weight_in_lbs: Option[Long],
+                  Acceleration: Option[Double],
+                  Year: String,
+                  Origin: String
+                )
+
+  val carsSchema = StructType(Array(
+    StructField("Name", StringType),
+    StructField("Miles_per_Gallon", DoubleType),
+    StructField("Cylinders", LongType),
+    StructField("Displacement", DoubleType),
+    StructField("Horsepower", LongType),
+    StructField("Weight_in_lbs", LongType),
+    StructField("Acceleration", DoubleType),
+    StructField("Year", StringType),
+    StructField("Origin", StringType)
+  ))
 
   case class DataprocProperties (
                                   project: String = "",
