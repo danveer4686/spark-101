@@ -1,11 +1,18 @@
 package common
 
-import org.apache.spark.sql.types.{DateType, DoubleType, LongType, StringType, StructField, StructType}
+import org.apache.spark.sql.types.{DateType, DoubleType, IntegerType, LongType, StringType, StructField, StructType, TimestampType}
 
 object Schema {
 
   case class CC(number:Int)
   case class Stocks(name: String, date: String, price: Double)
+
+  val onlinePurchaseSchema = StructType(Array(
+    StructField("id", StringType),
+    StructField("time", TimestampType),
+    StructField("item", StringType),
+    StructField("quantity", IntegerType)
+  ))
 
   case class Car(
                   Name: String,
