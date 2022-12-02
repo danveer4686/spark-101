@@ -1,0 +1,11 @@
+Driver OOM error:
+- Collect operation : all the partitions of the dataframe will go to driver program
+                      => driver tries to merge all parts in one hence OOM
+- Broadcast huge data : driver needs to merge all the parts and send across the executors
+                        => merging can cause driver go OOM
+
+Executors OOM error:
+- Scewed data : One very large partition which single executor cant handle
+- Too much parallelism : Too many cores on single executor will result very less
+                        => yarn overhead memory (Used for spark optimisations, better suffling of df, keeps all the required strings in hash table)
+                        => It will result in executor OOM

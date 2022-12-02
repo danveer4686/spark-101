@@ -1,0 +1,10 @@
+StaticAllocation:
+- Executors are not killed hence any data written by executor1 can be read by executor2 by accessing metadata (where to read data from) on executor1
+
+DynamicAllocation:
+- After writing data, executor1 can be killed by YARN (as per idle time policy). Metadata will also be deleted and other executors cant read this data
+- Hence we should always enable external shuffle service in case of dynamic allocation
+
+ExternalShuffleService:
+- Shuffle writes and shuffle reads will happen through this service. Even if executor is killed, metadata will be available in external service.
+- Enable it in yarn-site.xml

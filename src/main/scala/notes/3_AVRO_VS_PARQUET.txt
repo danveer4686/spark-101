@@ -1,0 +1,9 @@
+Avro:
+-Row based storage
+-Best suitable for select * (all columns)
+-Schema evolution is easier: Schema is saved in separate file
+
+Parquet:
+-Columner storage
+-Faster result for Select few columns queries
+-Compression is very good since similar values under same column

@@ -1,0 +1,5 @@
+Boadcast
+- val brd = sc.broadcast(myList)
+- myList variable will become in-memory available on all the executors. Hence joins will be much faster.
+- brd.unpersist() remove brd from in-memory (you can still access it)
+- brd.destroy() deletes brd completely

@@ -1,0 +1,8 @@
+Client:                                                 Cluster:
+- Driver runs on edge node where job is submitted from  - Driver runs on any machine on cluster
+
+Edge node:
+- Not part of the cluster
+- Bridge between cluster and outside network
+- Many helpful tools like oozie, hue, sqoop are installed here without disturbing actual cluster
+- Aggregated results can be kept here to be used by other teams like BI/DataScience so that other teams will not use main cluster

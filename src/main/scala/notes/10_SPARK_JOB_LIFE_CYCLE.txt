@@ -1,0 +1,15 @@
+- Spark app connects to yarn for resources
+- On success, driver program gets created on an executor
+- AppMaster gets created for this app
+- Job is divided into stages and tasks (all consecutive narrow transformations will be on same stages)
+- Driver asks RM for more resources. (Depends on static or dynamic resource allocation)
+- query => logical plan => (catalyst optimizer) optimized logical plan => physical plan
+- RM allocates new container considering data-locality (it can connect to name-node for data locality)
+- Containers will register themselves with driver. After completing the tasks return the result to driver.
+- Next stage will wait for all the tasks from current stage to get completed
+- Once all stages are over, AppMaster gets killed and job is completed.
+
+
+SparkContext
+- Important service running on driver
+- All the communications between driver and execution environment happens through sparkcontext

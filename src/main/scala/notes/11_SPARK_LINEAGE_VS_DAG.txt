@@ -1,0 +1,6 @@
+Lineage:
+- set of operations with sequence need to be performed to create RDD10 from RDD1
+
+Dag:
+- Acyclic graph of stages
+- It will show how many times data will be shuffled across executors

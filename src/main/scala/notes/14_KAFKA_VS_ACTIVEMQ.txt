@@ -1,0 +1,5 @@
+ActiveMQ:                                                 Kafka:
+- JMS (java msg system) based arch                      - Pub-Sub based arch
+- It cant retain msg.                                   - Msg can be retained for some period of time
+- No guarantee for order                                - Order of msg is maintained
+- msg is removed as soon as it is delivered             - Multiple consumers can read same msg

@@ -1,0 +1,13 @@
+Dataframe:
+- Collection of records where each record is an object of sql.ROW class. Column names, type are not known at compile time.
+Datasets:
+- Collection of records where each record is an typed object of any known case class. Column names, type are known at compile time.
+- More Memory efficient
+
+df.filter(x=> x.age >10) --wont work. compile error.
+ds.filter(x=> x.age >10) --works fine. no compile error.
+
+
+Transformations vs Actions:
+- Operations like map filter on a dataset will give another dataset. These are called transformations. Lazy
+- count, collect, show are called actions. Will mostly return type other than dataset. Not lazy

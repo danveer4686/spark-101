@@ -1,0 +1,36 @@
+1) Out of Memory Exceptions
+ 2) Missing data
+ 3) Data Skewness
+ 4) Spark job repeatedly fails
+ 5) FileAlreadyExistsException in Spark jobs
+ 6) Serialization Issues
+ 7) Inferschema Issues
+ 8) Creating Small Files
+ 9) Too Large Frame error
+ 10) Error when the total size of results is greater than the Spark Driver Max Result Size value.
+ 11) Spark Shell Command failure
+ 12) Join/Shuffle
+ 13) Spark jobs fail because of compilation failures
+ 14) Reading Encoding Files
+ 15) Executor Misconfiguration
+ 16) Broadcasting Large Data
+ 17) Result Exceeds Driver Memory
+ 18) Too Small and Too Large Partitions
+ 19) Optimizing Long Running Jobs
+ 20) Using coalesce() – Creates Uneven Partitions
+
+ Some challenges occur at the job level; these challenges are shared right across the data team. They include:
+
+ 1.How many executors should each job use?
+ 2.How much memory should I allocate for each job?
+ 3.How do I find and eliminate data skew?
+ 4.How do I make my pipelines work better?
+ 5.How do I know if a specific job is optimized?
+
+ Other challenges come up at the cluster level, or even at the stack level, as you decide what jobs to run on what clusters. These problems tend to be the remit of operations people and data engineers. They include:
+
+ 1.How do I size my nodes, and match them to the right servers/instance types?
+ 2.How do I see what’s going on across the Spark stack and apps?
+ 3.Is my data partitioned correctly for my SQL queries?
+ 4.When do I take advantage of auto-scaling?
+ 5.How do I get insights into jobs that have problems?

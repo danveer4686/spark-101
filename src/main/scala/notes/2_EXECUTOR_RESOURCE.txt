@@ -1,0 +1,10 @@
+6 machines
+- 16 cores and 64 gb ram
+
+leave 1 core and 1 gb on each machine for OS related operations
+
+It has been observed that 5 cores per executors works very well
+15 cores/ 5 cores = 3 executors on each machine
+
+63gb / 3 = 21 gb per executor
+leave 2 gb for yarn overhead memory (Used for spark optimisations, better suffling of df, keeps all the required strings in hash table)

@@ -1,0 +1,4 @@
+If partition by column creates small size file problem (column with high cardinality) then go for bucketing
+
+Hive bucketing without partitioning will result in same number of files
+Spark bucketing without partitioning may not result in same number of files (existing default partitions will break file further into buckets)

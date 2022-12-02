@@ -1,0 +1,4 @@
+ReduceByKey:                                            GroupByKey:
+- Group the data -> combine/aggregate it                - Group the data -> send it to other partition
+    -> send it to next executor
+- Result size after reducer will be very less.          - Result size without reducer will be very large.

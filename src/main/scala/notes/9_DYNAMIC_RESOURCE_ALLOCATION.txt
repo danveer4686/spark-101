@@ -1,0 +1,7 @@
+spark.dynamicAllocation.enabled=true
+spark.shuffle.service.enabled=true
+
+- tasks waiting for resources => driver asks resource-manager for more resources => new executors are allocated
+  => once tasks are finished, idle executors are killed and containers are returned back.
+- metadata about the parts on which killed-executors worked upon is lost which can result in data loss
+- to overcome this issue enable externalShuffleService which will store metadata post shuffling the data

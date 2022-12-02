@@ -1,0 +1,7 @@
+Coalesce:
+- Coalesce can merge partitions and reduce total no. of partitions without shuffling data across machines
+- It can result in un-even distribution of data (Data skewed)
+
+Repartition:
+- It can reduce or increase total no. of partitions
+- It evenly distributes data but shuffling across machines becomes slow

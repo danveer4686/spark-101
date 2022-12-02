@@ -1,0 +1,4 @@
+Hadoop:                                                 Spark:
+- Too many disk reads and write                         - In-memory computation avoids disk read and writes
+- After every map-red job container/jvm is killed       - container remains up and ready for next task
+-                                                       - scala code is concise

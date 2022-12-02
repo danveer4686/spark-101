@@ -1,0 +1,10 @@
+SELECT t1.c1,t1.c2 FROM t1
+INNER JOIN t2
+ON t1.c1==t2.d1
+WHERE t2.d2 = 'something'
+
+spark 2.x Static-Partitioning-Pruning
+- It uses predicate pushdown and reads only t2-records having t2.d2 = 'something'
+
+spark 3.x Dynamic-Partitioning-Pruning
+- It creates dynamic predicate for t1 as well and reads only t1-records which can join with filtered t2 records

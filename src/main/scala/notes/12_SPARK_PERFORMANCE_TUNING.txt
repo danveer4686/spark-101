@@ -1,0 +1,10 @@
+- Broadcast join
+- TreeReduce instead of reduce
+- Use 2.X or latest version: Spark encoders native formats to cache data. Concise, less memory footprints, faster read and writes
+- Do not => Broadcast huge data
+         => Too many core on single executor
+- Use mapPartition instead of map where ever applicable (for each row connecting to database fetching data and closing connection)
+- Use reduceByKey instead of groupByKey
+- Right file format
+- Right compression
+- Use salting for skewed data
