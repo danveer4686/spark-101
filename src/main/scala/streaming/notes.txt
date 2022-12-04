@@ -1,0 +1,45 @@
+Block interval:
+- with 2 sec as block interval, after every 2 sec all the new records receiver got will get replicated by block manager
+
+Batch interval:
+- multiple of block interval
+- with 10 sec as batch interval, after every 10 sec all the new records will get processed by spark engine
+
+Spark streaming context:
+- communicates to spark context and gets 10 sec data processed as batch processing by spark context
+
+Receiver:
+- service running on each executor
+- receives data
+- gets it replicated by block manager as per block interval
+- sends it to be processed by sparkstreamingcontext as per batch interval
+
+Stateful transformations:
+- word count example with 10 sec batch interval will give you grouped result for each 10 sec data
+- if we want to calculate word counts in last an hour with same 10 sec batch interval then we need to store each batch result somewhere
+- to store batch result we need stateful transformations like window function, reducebykey
+- stateless transformations do not need past batch result
+
+batch interval      2 sec
+window interval     6 sec
+sliding interval    4 sec
+
+DStreams vs Structured Stream:
+- Dstreams are older API which work on top of RDD
+- dstreams cant be auto optimised
+- dstreams doesnot have sql interface available
+- ssc.textfilestream() is example of dstream
+- spark.readStream.format() is example of structured stream
+- structured stream provides sql interface and benefit from catalyst optimiser
+
+Triggers:
+lines.writeStream
+      .format("console")
+      .outputMode("append")
+      .trigger( // if trigger is not specified then by default spark processes records as soon as they arrive
+        // Trigger.ProcessingTime(2.seconds) // every 2 seconds one batch is run
+        // Trigger.Once() // single batch, then terminate (in cloud environment to save resources, we can start the source once and process it once and shutdown the source to save some cloud billing)
+        Trigger.Continuous(2.seconds) // It creates ever-running tasks which process data as soon as it arrives but after every 2 seconds it writes records in checkpointing directory to recover failure.
+      )
+      .start()
+      .awaitTermination()

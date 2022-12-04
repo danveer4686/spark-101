@@ -76,10 +76,10 @@ object SparkStream1 {
     lines.writeStream
       .format("console")
       .outputMode("append")
-      .trigger(
-        // Trigger.ProcessingTime(2.seconds) // every 2 seconds run the query
-        // Trigger.Once() // single batch, then terminate
-        Trigger.Continuous(2.seconds) // experimental, every 2 seconds create a batch with whatever you have
+      .trigger( // if trigger is not specified then by default spark processes records as soon as they arrive
+        // Trigger.ProcessingTime(2.seconds) // every 2 seconds one batch is run
+        // Trigger.Once() // single batch, then terminate (in cloud environment to save resources, we can start the source once and process it once and shutdown the source to save some cloud billing)
+        Trigger.Continuous(2.seconds) // It creates ever-running tasks which process data as soon as it arrives but after every 2 seconds it writes records in checkpointing directory to recover failure.
       )
       .start()
       .awaitTermination()
