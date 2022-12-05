@@ -43,3 +43,7 @@ lines.writeStream
       )
       .start()
       .awaitTermination()
+
+Watermark:
+- how far we still consider records before dropping them
+- how late a record can be considered for processing
