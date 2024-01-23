@@ -6,7 +6,7 @@ scalaVersion := "2.12.10"
 
 val sparkVersion = "3.0.2"
 val GcpBqVersion = "1.80.0"
-val GcpDpVersion = "1.1.2"
+val GcpDpVersion = "4.29.0"
 val GcpGcsVersion = "1.108.0"
 val GcpPubSubVersion = "1.108.1"
 val cassandraConnectorVersion = "3.0.0"
